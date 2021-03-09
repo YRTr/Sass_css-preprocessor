@@ -24,11 +24,24 @@ body {
   margin: 0 auto;
 }
 
-.main .main_paragraph {
-  font-weight: 400;
+.main .main_paragraph1, .main .main_paragraph2 {
+  font-weight: 700;
 }
 
-.main .main_paragraph:hover {
+.main .main_paragraph1:hover, .main .main_paragraph2:hover {
   color: #ffa070;
+}
+
+.main .main_paragraph2:hover {
+  color: #ff652f;
+}
+
+@media (max-width: 800px) {
+  .main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=main.css.map */

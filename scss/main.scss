@@ -6,11 +6,23 @@
 }
 
 @mixin flexCenter($direction) {
-  //to define styles to reuse through your stylesheet
   display: flex;
   justify-content: center;
   align-items: center;
   $flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+  @if $light-theme {
+    background-color: lighten($primary-color, 100%);
+    color: darken($text-color, 100%);
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
 }
 
 body {
@@ -23,11 +35,26 @@ body {
   width: 80%;
   margin: 0 auto;
 
-  #{&}_paragraph {
-    font-weight: weight(regular);
+  #{&}_paragraph1 {
+    font-weight: weight(bold);
 
     &:hover {
       color: #ffa070;
     }
   }
+
+  #{&}_paragraph2 {
+    @extend .main_paragraph1;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.light {
+  @include theme($light-theme: false);
 }
